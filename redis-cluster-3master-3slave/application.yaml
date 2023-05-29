@@ -1,0 +1,24 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: application
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: application
+  template:
+    metadata:
+      labels:
+        name: application
+    spec:
+      containers:
+       - name: application
+         image: python:3.11.3
+         command: [ "sh", "-c" ]
+         args:
+          - |
+            pip3 install redis-py-cluster 
+            pip3 install loguru
+          
+
